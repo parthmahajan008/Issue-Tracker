@@ -1,7 +1,12 @@
+"use client";
+
 import Link from "next/link";
 import Logo from "./logo";
+import { usePathname } from "next/navigation";
+import classNames from "classnames";
 
 function Navbar() {
+  const currentPath = usePathname();
   const links = [
     {
       name: "Dashboard",
@@ -20,7 +25,15 @@ function Navbar() {
       <div className="w-full block flex-grow lg:flex lg:items-center lg:w-auto">
         <ul className="flex space-x-6">
           {links.map((link) => (
-            <Link href={link.href} key={link.name}>
+            <Link
+              href={link.href}
+              key={link.name}
+              className={classNames({
+                "text-white bold  ": currentPath === link.href,
+                "text-white-200": currentPath !== link.href,
+                "transition-colors duration-200 hover:text-white ": true,
+              })}
+            >
               {link.name}
             </Link>
           ))}
