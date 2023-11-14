@@ -30,8 +30,9 @@ function Navbar() {
               key={link.name}
               className={classNames({
                 "text-white bold  ": currentPath === link.href,
-                "text-white-200": currentPath !== link.href,
-                "transition-colors duration-200 hover:text-white ": true,
+                "text-gray-300": currentPath !== link.href,
+                "transition-colors duration-200 hover:text-white hover:text-lg":
+                  true,
               })}
             >
               {link.name}
